@@ -7,7 +7,7 @@ Song data is a project that allows users to search for a song in the Spotify lib
 At the moment the code is all client-side, so you just need to download the files to get going.
 
 ```
-#Clone this repository
+# Clone this repository
 $ git clone https://github.com/christopherthomasdesign/songdata.git
 ```
 
