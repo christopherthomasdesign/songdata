@@ -14,7 +14,8 @@ $ git clone https://github.com/christopherthomasdesign/songdata.git
 ## Built with
 
 * [Spotify Web API](https://developer.spotify.com/web-api/)
-* [Axios](https://github.com/axios/axios) – a promise based HTML client for the browser and node.js
+* [Axios](https://github.com/axios/axios), a promise based HTML client for the browser and node.js
+* [Randoma11y API](https://randoma11y.com) for generating accessible colour combinations
 
 ## Authors
 

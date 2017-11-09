@@ -2,14 +2,16 @@
   "name": "songdata",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
-    "start" : "node songdata.js"
+    "start": "node songdata.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.17.0"
+    "axios": "^0.17.0",
+    "browserify": "^14.5.0",
+    "dotenv": "^4.0.0"
   }
 }
