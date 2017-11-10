@@ -1564,7 +1564,8 @@ async function getSpotifyData( endpoint ){
 
 // run function to get spotify data, with the endpoint as the argument
 // so this should happen in response to a user action such as a search
-getSpotifyData( 'browse/new-releases' );
+getSpotifyData( 'audio-features/4cGeMgLcykDLAazHFpbZbU' );
+getSpotifyData( 'tracks/4cGeMgLcykDLAazHFpbZbU' );
 
 }).call(this,require('_process'))
 },{"_process":30,"axios":1,"dotenv":26}],29:[function(require,module,exports){
