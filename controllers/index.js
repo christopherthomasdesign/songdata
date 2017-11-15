@@ -21,7 +21,6 @@ router.get('/spotify-data/:endpoint/:request', (req, res) => {
 });
 
 router.get('/spotify-search/:query', (req, res) => {
-  console.log( 'QUERY');
   const query = `search?q=${req.params.query}&type=track`;
   getSpotifyData( query )
   .then( response =>  {
