@@ -12,7 +12,6 @@ router.get('/', (req, res) => {
 
 router.get('/spotify-data/:endpoint/:request', (req, res) => {
   const spotifyQuery = `${req.params.endpoint}/${req.params.request}`;
-  
   getSpotifyData( spotifyQuery )
   .then( response =>  {
     return res.status(200).send(response.data)
@@ -21,9 +20,18 @@ router.get('/spotify-data/:endpoint/:request', (req, res) => {
   });
 });
 
+router.get('/spotify-search/:query', (req, res) => {
+  console.log( 'QUERY');
+  const query = `search?q=${req.params.query}&type=track`;
+  getSpotifyData( query )
+  .then( response =>  {
+    return res.status(200).send(response.data)
+  }).catch( error =>  {
+    throw new Error(error);
+  });
+});
 
-
-
+// Get authorisation token to make requests to the Spotify API
 function getToken( ) {
   return axios({
     url: 'https://accounts.spotify.com/api/token',
@@ -41,6 +49,7 @@ function getToken( ) {
   });
 }
 
+// Using the token, make a get request to a specified Spotify API endpoint
 async function getSpotifyData( endpoint ){
   const tokenData = await getToken( );
   const token = tokenData.data.access_token;

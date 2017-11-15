@@ -3,13 +3,68 @@
   <head>
     <meta charset="utf-8">
     <title>Songdata</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/style.css">
   </head>
   <body>
-      <h1>hola</h1>
-      <code id="js-code">
-        
-      </code>
-      <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-      <script src="./index.js" charset="utf-8"></script>
+    <main>
+      <h1>Song data</h1>
+
+      <form id="track-search">
+        <fieldset>
+          <label for="search-input">Search for a song</label>
+          <input type="search" name="search-input" id="search-input">
+          <button type="submit" id="search-submit">Search</button>
+        </fieldset>
+      </form>
+
+      <!-- <code id="js-code"></code> -->
+
+      <dl>
+        <dt>Song:</dt>
+        <dd id="data-track"></dd>
+        <dt>Artist:</dt>
+        <dd id="data-artist"></dd>
+        <dt>Album:</dt>
+        <dd id="data-album"></dd>
+        <dt>Length:</dt>
+        <dd id="data-duration"></dd>
+        <dt>Tempo:</dt>
+        <dd id="data-tempo"></dd>
+        <dt>Key:</dt>
+        <dd id="data-key"></dd>
+        <dt>Popularity:</dt>
+        <dd id="data-popularity"></dd>
+        <dt>Danceability:</dt>
+        <dd id="data-danceability"></dd>
+        <dt>Energy:</dt>
+        <dd id="data-energy"></dd>
+        <dt>Joyousness:</dt>
+        <dd id="data-valence"></dd>
+      </dl>
+
+      <div class="song-data-point">
+        <h2>Tempo</h2>
+        <details>
+          <summary>More about tempo</summary>
+          <p>The overall estimated tempo of a track in beats per minute (BPM). In musical terminology, tempo is the speed or pace of a given piece and derives directly from the average beat duration.</p>
+        </details>
+      </div>
+
+      <div class="song-data-point">
+        <h2>Key and mode</h2>
+        <details>
+          <summary>More about key and mode</summary>
+          <p>The key the track is in. Mode indicates the modality (major or minor) of a track, the type of scale from which its melodic content is derived.</p>
+        </details>
+      </div>
+
+
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="./index.js" charset="utf-8"></script>
+
   </body>
 </html>

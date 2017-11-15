@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "start": "node songdata.js"
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
