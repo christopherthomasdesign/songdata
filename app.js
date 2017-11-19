@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const controllers = require('./controllers/index');
 
+
 // Middleware
 app.use(morgan('dev'));
 app.use(bodyParser.json());

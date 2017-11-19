@@ -2,22 +2,42 @@
 
 $(window).on("load",  (e) =>  {
 
-  // Get accessible colour combination
+  // Get accessible colour combination and apply to the interface
 
   const randoma11y = {
     "async": true,
     "crossDomain": true,
-    "url": "http://randoma11y.com/combos/?page=1&per_page=10",
+    "url": "http://randoma11y.com/combos/top",
     "method": "GET",
   }
 
   $.ajax(randoma11y).done( (response) =>  {
-    console.log(response);
+    // console.log(response);
+
+    // Take random palette from the array, pick out the 2 colours
     var $randomPalette = response[Math.floor(Math.random()*response.length)]
-    var $foreground = $randomPalette.color_one;
-    var $background = $randomPalette.color_two;
-    $('body').css("color", $foreground);
-    $('body').css("background-color", $background);
+    var $colourOne = $randomPalette.color_one;
+    var $colourTwo = $randomPalette.color_two;
+
+    // Elements to change colour
+    $('.container').css({
+      "color": $colourOne,
+      "background-color": $colourTwo
+    });
+    $('.container:nth-of-type(2n)').css({
+      "color": $colourTwo,
+      "background-color": $colourOne
+    });
+    $('input').css({
+      "color": $colourOne,
+      "background-color": $colourTwo,
+      "border": '2px solid' + $colourOne
+    });
+    $('button').css({
+      "color": $colourTwo,
+      "background-color": $colourOne,
+    })
+
   });
 
 });
