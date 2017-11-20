@@ -1,48 +1,3 @@
-// When window loads, get a track and print it on the page
-
-$(window).on("load",  (e) =>  {
-
-  // Get accessible colour combination and apply to the interface
-
-  const randoma11y = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://randoma11y.com/combos/top",
-    "method": "GET",
-  }
-
-  $.ajax(randoma11y).done( (response) =>  {
-    // console.log(response);
-
-    // Take random palette from the array, pick out the 2 colours
-    var $randomPalette = response[Math.floor(Math.random()*response.length)]
-    var $colourOne = $randomPalette.color_one;
-    var $colourTwo = $randomPalette.color_two;
-
-    // Elements to change colour
-    $('.container').css({
-      "color": $colourOne,
-      "background-color": $colourTwo
-    });
-    $('.container:nth-of-type(2n)').css({
-      "color": $colourTwo,
-      "background-color": $colourOne
-    });
-    $('input').css({
-      "color": $colourOne,
-      "background-color": $colourTwo,
-      "border": '2px solid' + $colourOne
-    });
-    $('button').css({
-      "color": $colourTwo,
-      "background-color": $colourOne,
-    })
-
-  });
-
-});
-
-
 // PAGE ELEMENTS
 
 const $searchInput = $('#search-input');
@@ -105,7 +60,6 @@ $searchSubmit.on('click', (e) => {
   $('.spinner').show();
 
   var $searchTerm = $searchInput.val().split(" ").join("+");
-  console.log($searchTerm);
 
   const getTrack = {
     "async": true,
@@ -117,7 +71,7 @@ $searchSubmit.on('click', (e) => {
   // once you've got a result from the search
   $.ajax(getTrack).done( (response) =>  {
 
-    // hide the spinner
+    // hide the spinner, show the data point
     $('.data-point').show();
     $('.spinner').hide();
 
@@ -134,17 +88,18 @@ $searchSubmit.on('click', (e) => {
 
     $.ajax(trackDetails).done( (response) =>  {
       console.log(response);
+
+      var dataPopularity = Math.round(response.popularity) + '%';
+
       $('#data-track').text(response.name);
       $('#data-artist').text(response.artists[0].name);
       $('#data-album').text(response.album.name);
       $('#data-duration').text(convertToMinutes(response.duration_ms));
-      $('#data-popularity').text(Math.round(response.popularity) + '%');
+      $('#data-popularity').text(dataPopularity).closest('span.bar').css('width', dataPopularity);
 
       // return album artwork
-      console.log(response.album.images[1].url);
-
-      // try getting domainant colour from the returned image, then using that to call randoma11y API :/
-
+      var imageURL = response.album.images[0].url;
+      console.log(imageURL);
 
     });
 
@@ -159,11 +114,22 @@ $searchSubmit.on('click', (e) => {
     $.ajax(audioFeatures).done( (response) =>  {
       console.log(response);
       // $('#js-code').text( JSON.stringify(response) );
-      $('#data-danceability').text(Math.round(response.danceability*100) + '%');
-      $('#data-energy').text(Math.round(response.energy*100) + '%');
-      $('#data-tempo').text(Math.round(response.tempo) + ' bpm');
-      $('#data-valence').text(Math.round(response.valence*100) + '%');
-      $('#data-key').text(convertToKey(response.key) + ' ' + convertToMode(response.mode));
+
+      var dataDanceability = Math.round(response.danceability*100) + '%';
+      var dataEnergy = Math.round(response.energy*100) + '%';
+      var dataValence = Math.round(response.valence*100) + '%';
+      var dataTempo = Math.round(response.tempo) + ' bpm';
+      var dataKey = convertToKey(response.key) + ' ' + convertToMode(response.mode);
+
+      // print the human readable numbers into the page, change bar chart width
+      $('#data-danceability').text(dataDanceability).closest('span.bar').css('width', dataDanceability);
+      $('#data-energy').text(dataEnergy).closest('span.bar').css('width', dataEnergy);
+      $('#data-valence').text(dataValence).closest('span.bar').css('width', dataValence);
+      $('#data-tempo').text(dataTempo);
+      $('#data-key').text(dataKey);
+
+
+
     });
   });
 
