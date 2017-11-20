@@ -4,11 +4,28 @@ Song data is a project that allows users to search for a song in the Spotify lib
 
 ## Getting started
 
-At the moment the code is all client-side, so you just need to download the files to get going.
+Clone this repository
 
 ```
-# Clone this repository
 $ git clone https://github.com/christopherthomasdesign/songdata.git
+```
+
+Install node modules
+
+```
+$ npm install
+```
+Create a `.env` file which contains your Spotify Client ID and Client Secret. To do this you will need to have a Spotify account and create an application. The file should look a bit like this:
+
+```
+CLIENT_ID='client-id-here'
+SECRET_ID='secret-id-here'
+```
+
+Run the app
+
+```
+$ npm start
 ```
 
 ## Built with
@@ -25,4 +42,4 @@ Chris Thomas
 
 ## License
 
-## Etc.
+Do what you want mate

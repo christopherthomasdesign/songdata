@@ -101,6 +101,8 @@ function convertToMode (response) {
 // When user searches for a song, return the Spotify ID of that track
 
 $searchSubmit.on('click', (e) => {
+  $('.data-point').hide();
+  $('.spinner').show();
 
   var $searchTerm = $searchInput.val().split(" ").join("+");
   console.log($searchTerm);
@@ -114,9 +116,15 @@ $searchSubmit.on('click', (e) => {
 
   // once you've got a result from the search
   $.ajax(getTrack).done( (response) =>  {
+
+    // hide the spinner
+    $('.data-point').show();
+    $('.spinner').hide();
+
     // store the first result's ID
     const idTrack = response.tracks.items[0].id;
-    // run function using the track ID to get song data
+
+    // ajax call using the track ID to get track details
     const trackDetails = {
       "async": true,
       "crossDomain": true,
@@ -131,8 +139,16 @@ $searchSubmit.on('click', (e) => {
       $('#data-album').text(response.album.name);
       $('#data-duration').text(convertToMinutes(response.duration_ms));
       $('#data-popularity').text(Math.round(response.popularity) + '%');
+
+      // return album artwork
+      console.log(response.album.images[1].url);
+
+      // try getting domainant colour from the returned image, then using that to call randoma11y API :/
+
+
     });
 
+    // ajax call using the track ID to get audio features
     const audioFeatures = {
       "async": true,
       "crossDomain": true,
@@ -151,69 +167,8 @@ $searchSubmit.on('click', (e) => {
     });
   });
 
+
+
   return false;
 
 });
-
-// using the ID returned in the search, get information about that track
-
-function getTrackInfo() {
-
-  // const trackDetails = {
-  //   "async": true,
-  //   "crossDomain": true,
-  //   "url": "http://localhost:3000/spotify-data/tracks/" + idTrack,
-  //   "method": "GET",
-  // }
-  //
-  // $.ajax(trackDetails).done( (response) =>  {
-  //   console.log(response);
-  //   $('#data-track').text(response.name);
-  //   $('#data-artist').text(response.artists[0].name);
-  //   $('#data-album').text(response.album.name);
-  //   $('#data-duration').text(convertToMinutes(response.duration_ms));
-  //   $('#data-popularity').text(Math.round(response.popularity) + '%');
-  // });
-  //
-  // const audioFeatures = {
-  //   "async": true,
-  //   "crossDomain": true,
-  //   "url": "http://localhost:3000/spotify-data/audio-features/" + idTrack,
-  //   "method": "GET",
-  // }
-  //
-  // $.ajax(audioFeatures).done( (response) =>  {
-  //   console.log(response);
-  //   // $('#js-code').text( JSON.stringify(response) );
-  //   $('#data-danceability').text(Math.round(response.danceability*100) + '%');
-  //   $('#data-energy').text(Math.round(response.energy*100) + '%');
-  //   $('#data-tempo').text(Math.round(response.tempo) + ' bpm');
-  //   $('#data-valence').text(Math.round(response.valence*100) + '%');
-  //   $('#data-key').text(convertToKey(response.key) + ' ' + convertToMode(response.mode));
-  // });
-
-}
-
-
-
-
-
-
-
-
-
-
-
-// EXAMPLE SONG KEYS
-//
-// Raining blood - Slayer
-// 4Yx9Tw9dTgQ8eGCq3PRDyn
-//
-// Happy - Pharrell Williams
-// 5b88tNINg4Q4nrRbrCXUmg
-//
-// Mozart — Piano Sonata #16 in C major
-// 6LKsT6X9BxMK8ePCDNRLal
-
-
-// trying out accessible colour combos

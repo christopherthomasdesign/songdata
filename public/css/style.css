@@ -15,9 +15,9 @@ body {
 
 * {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 19px;
+  font-size: 16px;
   font-weight: normal;
-  line-height: 1.3;
+  line-height: 1.35;
 }
 
 /* TYPOGRAPHY */
@@ -38,15 +38,14 @@ a:hover {
 }
 
 p {
-  font-size: 16px;
   margin: 2em 0;
-  line-height: 1.35;
 }
 
 .data-point {
   display: block;
   font-size: 10rem;
   letter-spacing: -0.015em;
+  font-kerning: normal;
   line-height: 0.875em;
   font-weight: 300;
   padding: 0.1em 0 0.15em;
@@ -57,6 +56,10 @@ p {
 details {
   margin-bottom: 1em;
 }
+
+details:hover summary::-webkit-details-marker {
+  color: inherit;
+ }
 
 details div {
   margin: 0;
@@ -76,7 +79,7 @@ summary:hover {
 input:focus,
 summary:focus,
 button:focus {
-  outline: 3px solid #fff;
+  outline: 3px solid #000;
   outline-offset: 0;
 }
 
@@ -114,13 +117,68 @@ button {
   border-radius: 0;
   color: white;
   margin-left: -7px;
-  padding: 7px 10px;
+  padding: 7px 20px;
 }
 
 button:hover {
   cursor: pointer;
 }
 
+.form-group {
+  margin-bottom: 2em;
+}
+
+/* Loading spinner */
+
+.spinner {
+  width: 50px;
+  height: 40px;
+  display: none;
+}
+
+.spinner > div {
+  background-color: #111;
+  height: 100%;
+  width: 4px;
+  display: inline-block;
+  -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+  animation: sk-stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect2 {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+.spinner .rect4 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+
+@-webkit-keyframes sk-stretchdelay {
+  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
+  20% { -webkit-transform: scaleY(1.0) }
+}
+
+@keyframes sk-stretchdelay {
+  0%, 40%, 100% {
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4);
+  }  20% {
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
+  }
+}
 
 /* POSITIONING */
 
@@ -307,6 +365,3 @@ button:hover {
   }
 
 }
-
-
-/* Colours affected by JS */

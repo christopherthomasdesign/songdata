@@ -20,17 +20,17 @@
           <div class="col-9">
             <form id="track-search">
               <fieldset>
-                <label for="search-input">Search for a song</label>
-                <input type="search" name="search-input" id="search-input">
-                <button type="submit" id="search-submit">Search</button>
+                <div class="form-group">
+                  <label for="search-input">Search for a song</label>
+                  <p>If you don't get the result you expect, try searching with both the name of the song and the artist.</p>
+                  <input type="search" name="search-input" id="search-input">
+                  <button type="submit" id="search-submit">Search</button>
+                </div>
               </fieldset>
             </form>
           </div>
         </div>
       </div>
-
-
-
 
       <div class="container">
         <div class="row">
@@ -39,6 +39,13 @@
           </div>
           <div class="col-9">
             <span id="data-track" class="data-point"></span>
+            <div class="spinner">
+              <div class="rect1"></div>
+              <div class="rect2"></div>
+              <div class="rect3"></div>
+              <div class="rect4"></div>
+              <div class="rect5"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -131,7 +138,12 @@
         <div class="row">
           <div class="col-3">
             <h2>Danceability</h2>
-            <p>Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0 is least danceable and 100 is most danceable.</p>
+            <details>
+              <summary>About danceability</summary>
+              <div>
+                <p>Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0 is least danceable and 100 is most danceable.</p>
+              </div>
+            </details>
           </div>
           <div class="col-9">
             <span id="data-danceability" class="data-point"></span>
@@ -143,7 +155,12 @@
         <div class="row">
           <div class="col-3">
             <h2>Energy</h2>
-            <p>Energy is a measure from 0 to 100 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.</p>
+            <details>
+              <summary>About energy</summary>
+              <div>
+                <p>Energy is a measure from 0 to 100 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.</p>
+              </div>
+            </details>
           </div>
           <div class="col-9">
             <span id="data-energy" class="data-point"></span>
@@ -155,7 +172,12 @@
         <div class="row">
           <div class="col-3">
             <h2>Joyousness</h2>
-            <p>Called 'valence' by Spotify. A measure from 0 to 100 describing the musical positivity conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).</p>
+            <details>
+              <summary>About joyousness</summary>
+              <div>
+                <p>Called 'valence' by Spotify. A measure from 0 to 100 describing the musical positivity conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).</p>
+              </div>
+            </details>
           </div>
           <div class="col-9">
             <span id="data-valence" class="data-point"></span>
