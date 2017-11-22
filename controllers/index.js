@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-require('dotenv').config()
+require('dotenv').config();
 const axios = require('axios');
 
 const client_id = process.env.CLIENT_ID;
@@ -58,7 +58,7 @@ async function getSpotifyData( endpoint ){
     headers: {
       'Authorization': 'Bearer ' + token
     }
-  })
+  });
 }
 
 module.exports = router;

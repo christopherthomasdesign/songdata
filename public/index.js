@@ -59,8 +59,10 @@ $searchSubmit.on('click', (e) => {
   $('.data-point').hide();
   $('.spinner').show();
 
+  // store search value entered in correct format for the API
   var $searchTerm = $searchInput.val().split(" ").join("+");
 
+  // GET track
   const getTrack = {
     "async": true,
     "crossDomain": true,
@@ -75,10 +77,11 @@ $searchSubmit.on('click', (e) => {
     $('.data-point').show();
     $('.spinner').hide();
 
-    // store the first result's ID
+    // store IDs to get track and artists
     const idTrack = response.tracks.items[0].id;
+    const idArtist = response.tracks.items[0].artists[0].id;
 
-    // ajax call using the track ID to get track details
+    // GET track details
     const trackDetails = {
       "async": true,
       "crossDomain": true,
@@ -97,13 +100,9 @@ $searchSubmit.on('click', (e) => {
       $('#data-duration').text(convertToMinutes(response.duration_ms));
       $('#data-popularity').text(dataPopularity).closest('span.bar').css('width', dataPopularity);
 
-      // return album artwork
-      var imageURL = response.album.images[0].url;
-      console.log(imageURL);
-
     });
 
-    // ajax call using the track ID to get audio features
+    // GET audio features
     const audioFeatures = {
       "async": true,
       "crossDomain": true,
@@ -113,7 +112,6 @@ $searchSubmit.on('click', (e) => {
 
     $.ajax(audioFeatures).done( (response) =>  {
       console.log(response);
-      // $('#js-code').text( JSON.stringify(response) );
 
       var dataDanceability = Math.round(response.danceability*100) + '%';
       var dataEnergy = Math.round(response.energy*100) + '%';
@@ -128,12 +126,27 @@ $searchSubmit.on('click', (e) => {
       $('#data-tempo').text(dataTempo);
       $('#data-key').text(dataKey);
 
+    });
 
+    // GET artist
+    const artist = {
+      "async": true,
+      "crossDomain": true,
+      "url": "http://localhost:3000/spotify-data/artists/" + idArtist,
+      "method": "GET",
+    }
+
+    $.ajax(artist).done( (response) =>  {
+      console.log(response);
+
+      var dataGenres = response.genres.map( genre => {
+        return ' ' + genre;
+      });
+      $('#data-genres').text(dataGenres);
 
     });
+
   });
-
-
 
   return false;
 

@@ -9,21 +9,20 @@ body {
   left: 0;
   top: 0;
   font-size: 100%;
-}
-
-/* ROOT FONT STYLES */
-
-* {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: normal;
   line-height: 1.35;
+  color: #1a1a1a;
+  background-color: #fff;
 }
 
 /* TYPOGRAPHY */
+/* Using a golden ratio type scale (1.618) using 17px as the base size*/
 
 h1, h2 {
-  font-size: 2rem;
+  font-weight: inherit;
+  font-size: 1.618em;
   letter-spacing: -0.01em;
   margin: 0.5em 0;
 }
@@ -39,16 +38,28 @@ a:hover {
 
 p {
   margin: 2em 0;
+  max-width: 32em;
 }
 
 .data-point {
   display: block;
-  font-size: 10rem;
+  font-size: 6.854em;
   letter-spacing: -0.015em;
   font-kerning: normal;
-  line-height: 0.875em;
+  line-height: 0.875;
   font-weight: 300;
-  padding: 0.1em 0 0.15em;
+  padding: 0.1em 0 0.2em;
+}
+
+.genres {
+  font-size: 4.236em;
+  padding-bottom: 0.25em;
+  line-height: 1;
+}
+
+.header {
+  background-color: #fff;
+  color: #1a1a1a;
 }
 
 /* Details */
@@ -61,10 +72,6 @@ details:hover summary::-webkit-details-marker {
   color: inherit;
  }
 
-details div {
-  margin: 0;
-}
-
 summary {
   text-decoration: underline;
 }
@@ -74,12 +81,16 @@ summary:hover {
   opacity: 0.8;
 }
 
+details div p {
+  margin-top: 1em;
+}
+
 /* Focus states */
 
 input:focus,
 summary:focus,
 button:focus {
-  outline: 4px solid gold;
+  outline: 4px solid #76D7C4;
   outline-offset: 0;
 }
 
@@ -92,7 +103,7 @@ fieldset {
 
 label {
   display: block;
-  font-size: 2rem;
+  font-size: 1.618em;
   letter-spacing: -0.01em;
   margin: 0.5em 0;
 }
@@ -100,32 +111,33 @@ label {
 input,
 button {
   font-family: inherit;
-  font-size: 2rem;
+  font-size: 1.618em;
   letter-spacing: -0.01em;
 }
 
 input {
-  border: 2px solid black;
-  color: black;
+  border: 2px solid #1a1a1a;
+  color: #1a1a1a;
   padding: 5px;
   width: 50%;
 }
 
 button {
-  background-color: black;
+  background-color: #1a1a1a;
   border: none;
   border-radius: 0;
-  color: white;
-  margin-left: -7px;
+  color: #fff;
+  margin-left: -5px;
   padding: 7px 20px;
 }
 
 button:hover {
   cursor: pointer;
+  opacity: 0.9;
 }
 
 .form-group {
-  margin-bottom: 2em;
+  margin-bottom: 3em;
 }
 
 /* Loading spinner */
@@ -134,13 +146,13 @@ button:hover {
   width: 50px;
   height: 40px;
   display: none;
-  margin-top: 1em;
+  margin-top: 0.75em;
 }
 
 .spinner > div {
-  background-color: #111;
+  background-color: #1a1a1a;
   height: 100%;
-  width: 4px;
+  width: 2px;
   display: inline-block;
   -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
   animation: sk-stretchdelay 1.2s infinite ease-in-out;
@@ -187,27 +199,24 @@ button:hover {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
-  color: #111;
-  background-color: #fff;
+  border-bottom: 2px solid #1a1a1a;
 }
 
-.bar {
-  display: inline-block;
-  height: 100%;
+.container:last-of-type {
+  border-bottom: none;
 }
 
 .container .bar {
-  background-image: repeating-linear-gradient(-45deg,
-      transparent,
-      transparent 4px,
-      rgba(30, 215, 96, 0.3) 4px,
-      rgba(30, 215, 96, 0.3) 8px);
+  background-color: #eaeaea;
+  display: inline-block;
+  height: 100%;
+  width: 0%;
+  transition: 3s ease-in-out;
 }
 
 .row {
   position: relative;
   width: 100%;
-  border-bottom: 2px solid #111;
 }
 
 .row [class^="col"] {
