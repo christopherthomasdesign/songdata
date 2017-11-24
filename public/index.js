@@ -11,6 +11,7 @@ function convertToMinutes (millis) {
   return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
 }
 
+// use map
 function convertToKey (response) {
   if (response === 0) {
     return 'C'
